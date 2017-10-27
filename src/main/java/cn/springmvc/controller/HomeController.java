@@ -1,9 +1,17 @@
 package cn.springmvc.controller;
 
+import cn.springmvc.model.PageData;
+import cn.springmvc.service.HomeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * @author caowencheng<845982120@qq.com>
@@ -14,14 +22,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class HomeController {
 
-    //添加一个日志器
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    //映射一个action
-    @RequestMapping("/index")
-    public  String index(){
-        //输出日志文件
-        logger.info("the first jsp pages");
+    private HomeService homeService;
+
+    @Autowired
+    public void setHomeService(HomeService homeService) {
+
+        this.homeService = homeService;
+
+    }
+
+
+    @RequestMapping(value = "/index/{title}", method = RequestMethod.GET)
+    public String index(@PathVariable("title") String title, Model model){
+
+        logger.info("The title = {}", title);
+
+        PageData pageData = homeService.getStringByTitle(title);
+
+        model.addAttribute(pageData);
+
         //返回一个index.jsp这个视图
         return "index";
     }
