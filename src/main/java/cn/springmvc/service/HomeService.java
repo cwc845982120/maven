@@ -10,4 +10,6 @@ public interface HomeService {
 
     PageData getStringByTitle(String title);
 
+    PageData getJsonByTitle();
+
 }

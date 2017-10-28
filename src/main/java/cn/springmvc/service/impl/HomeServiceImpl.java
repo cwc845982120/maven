@@ -22,4 +22,14 @@ public class HomeServiceImpl implements HomeService {
 
     }
 
+    public PageData getJsonByTitle() {
+
+        PageData pageData = new PageData();
+
+        pageData.getTitle();
+
+        return pageData;
+
+    }
+
 }
