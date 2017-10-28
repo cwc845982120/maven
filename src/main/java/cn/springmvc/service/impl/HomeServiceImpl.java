@@ -22,7 +22,7 @@ public class HomeServiceImpl implements HomeService {
 
     }
 
-    public PageData getJsonByTitle() {
+    public PageData getJson() {
 
         PageData pageData = new PageData();
 

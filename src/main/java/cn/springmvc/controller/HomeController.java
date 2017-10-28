@@ -47,7 +47,7 @@ public class HomeController {
     @RequestMapping(value = "/json", method = RequestMethod.GET)
     public @ResponseBody PageData getDataJson(){
 
-        return homeService.getJsonByTitle();
+        return homeService.getJson();
 
     }
 
