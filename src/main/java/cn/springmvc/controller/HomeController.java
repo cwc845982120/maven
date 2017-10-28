@@ -31,12 +31,12 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/index/{title}", method = RequestMethod.GET)
-    public String index(@PathVariable("title") String title, Model model){
+    @RequestMapping(value = "/index/{id}", method = RequestMethod.GET)
+    public String index(@PathVariable("id") int id, Model model){
 
-        logger.info("The title = {}", title);
+        logger.info("The id = {}", id);
 
-        PageData pageData = homeService.getStringByTitle(title);
+        PageData pageData = homeService.getUserById(id);
 
         model.addAttribute(pageData);
 
@@ -47,7 +47,9 @@ public class HomeController {
     @RequestMapping(value = "/json", method = RequestMethod.GET)
     public @ResponseBody PageData getDataJson(){
 
-        return homeService.getJson();
+        int id = 1;
+
+        return homeService.queryUserById(id);
 
     }
 

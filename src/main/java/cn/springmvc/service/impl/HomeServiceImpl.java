@@ -12,21 +12,17 @@ import org.springframework.stereotype.Service;
 @Service("homeService")
 public class HomeServiceImpl implements HomeService {
 
-    public PageData getStringByTitle(String title) {
+    public PageData getUserById(int id) {
 
         PageData pageData = new PageData();
-
-        pageData.setTitle(title);
 
         return pageData;
 
     }
 
-    public PageData getJson() {
+    public PageData queryUserById(int id) {
 
         PageData pageData = new PageData();
-
-        pageData.getTitle();
 
         return pageData;
 

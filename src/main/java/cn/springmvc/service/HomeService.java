@@ -8,8 +8,8 @@ import cn.springmvc.model.PageData;
 
 public interface HomeService {
 
-    PageData getStringByTitle(String title);
+    PageData getUserById(int id);
 
-    PageData getJson();
+    PageData queryUserById(int id);
 
 }
