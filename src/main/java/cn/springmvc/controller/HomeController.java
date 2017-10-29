@@ -1,13 +1,14 @@
 package cn.springmvc.controller;
 
-import cn.springmvc.model.PageData;
+import cn.springmvc.base.BaseController;
+import cn.springmvc.model.User;
 import cn.springmvc.service.HomeService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -17,9 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/home")
-public class HomeController {
-
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+public class HomeController extends BaseController {
 
     private HomeService homeService;
 
@@ -30,24 +29,21 @@ public class HomeController {
 
     }
 
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String checkSuccess(){
 
-    @RequestMapping(value = "/index/{id}", method = RequestMethod.GET)
-    public String index(@PathVariable("id") int id, Model model){
+        logger.debug("server work success!");
 
-        logger.info("The id = {}", id);
-
-        PageData pageData = homeService.getUserById(id);
-
-        model.addAttribute(pageData);
-
-        //返回一个index.jsp这个视图
         return "index";
+
     }
 
-    @RequestMapping(value = "/json", method = RequestMethod.GET)
-    public @ResponseBody PageData getDataJson(){
+    @RequestMapping(value = "/json", method = RequestMethod.POST)
+    public @ResponseBody User getDataJson(HttpServletRequest request){
 
-        int id = 1;
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        logger.debug("the id = {}", id);
 
         return homeService.queryUserById(id);
 

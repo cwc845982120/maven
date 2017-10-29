@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>${pageData.id}</h2>
+<h2>spring MVC project is work on success!</h2>
 </body>
 </html>

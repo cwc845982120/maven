@@ -1,8 +1,11 @@
 package cn.springmvc.service.impl;
 
-import cn.springmvc.model.PageData;
+import cn.springmvc.dao.UserDao;
+import cn.springmvc.model.User;
 import cn.springmvc.service.HomeService;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author caowencheng<845982120@qq.com>
@@ -12,20 +15,13 @@ import org.springframework.stereotype.Service;
 @Service("homeService")
 public class HomeServiceImpl implements HomeService {
 
-    public PageData getUserById(int id) {
 
-        PageData pageData = new PageData();
+    @Resource
+    private UserDao userDao;
 
-        return pageData;
+    public User queryUserById(int id) {
 
-    }
-
-    public PageData queryUserById(int id) {
-
-        PageData pageData = new PageData();
-
-        return pageData;
-
+        return this.userDao.queryUserById(id);
     }
 
 }

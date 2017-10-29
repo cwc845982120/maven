@@ -13,9 +13,13 @@
     <!--启用spring的一些annotation -->
     <context:annotation-config/>
 
-    <context:component-scan base-package="cn.springmvc">
-        <context:exclude-filter type="annotation"
-            expression="org.springframework.stereotype.Controller" />
-    </context:component-scan>
+    <!-- 开启SpringMVC注解模式 -->
+    <mvc:annotation-driven/>
+
+    <!--引入配置属性文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties" />
+
+    <!--引入spring-mybatis配置文件 -->
+    <import resource="classpath:spring/spring-mybatis.xml" />
 
 </beans>

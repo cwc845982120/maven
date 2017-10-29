@@ -1,6 +1,7 @@
 package cn.springmvc.service;
 
-import cn.springmvc.model.PageData;
+import cn.springmvc.model.User;
+
 /**
  * @author caowencheng<845982120@qq.com>
  * @create 2017-10-27 22:28
@@ -8,8 +9,6 @@ import cn.springmvc.model.PageData;
 
 public interface HomeService {
 
-    PageData getUserById(int id);
-
-    PageData queryUserById(int id);
+    User queryUserById(int id);
 
 }
