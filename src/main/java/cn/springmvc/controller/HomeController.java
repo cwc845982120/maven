@@ -4,12 +4,10 @@ import cn.springmvc.base.BaseController;
 import cn.springmvc.model.User;
 import cn.springmvc.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-
+import java.util.Map;
 
 /**
  * @author caowencheng<845982120@qq.com>
@@ -39,11 +37,11 @@ public class HomeController extends BaseController {
     }
 
     @RequestMapping(value = "/json", method = RequestMethod.POST)
-    public @ResponseBody User getDataJson(HttpServletRequest request){
+    public @ResponseBody User getDataJson(@RequestBody String param){
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        Map<String,Object> map = json2Map(param);
 
-        logger.debug("the id = {}", id);
+        Integer id = Integer.parseInt(map.get("id").toString());
 
         return homeService.queryUserById(id);
 
